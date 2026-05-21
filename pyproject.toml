@@ -60,8 +60,6 @@ uv lock --upgrade-package "$PACKAGE_NAME" --exclude-newer="1 week"
 git add uv.lock
 uv build
 """
-# changelog.template_dir = ".github/templates"
-changelog.environment.keep_trailing_newline = true
 
 # --------------------------------------------
 
