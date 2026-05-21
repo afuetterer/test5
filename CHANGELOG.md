@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file. See [conven
 
 ### Features
 
+- git-cliff - ([db0f59d]($REPO/commit/db0f59da0f8c5ca7b0b41a34da3d65a9daf59586))
 - make no release pls - ([a2eab44]($REPO/commit/a2eab44eecb23abd60427d5f656a38415f3da1d4))
 
 ## [0.1.0]($REPO/compare/0.0.1..0.1.0) - 2026-05-21
