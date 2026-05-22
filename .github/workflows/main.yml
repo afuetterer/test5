@@ -57,12 +57,17 @@ jobs:
 
     steps:
 
-    - name: Checkout released tag with full history
+    - name: Checkout
       uses: actions/checkout@v6
       with:
-        fetch-depth: 0
-        ref: ${{ needs.release.outputs.tag }}
+        fetch-depth: 1
+        # ref: ${{ needs.release.outputs.tag }}
         persist-credentials: false
+
+    # setup uv
+
+    # TODO: generate release notes with git-cliff
+    # uvx git-cliff --latest --strip=header --output=release-notes.md
 
     - name: Create draft GitHub Release
       env:
@@ -74,3 +79,5 @@ jobs:
           --draft \
           --verify-tag \
           --title "${TAG}"
+
+      # --notes-file release-notes.md
