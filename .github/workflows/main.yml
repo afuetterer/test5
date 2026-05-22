@@ -24,7 +24,7 @@ jobs:
       contents: read
 
     outputs:
-      released: ${{ steps.psr.outputs.released }}
+      released: ${{ steps.psr.outputs.released || 'false' }}
       tag: ${{ steps.psr.outputs.tag }}
 
     steps:
@@ -57,6 +57,8 @@ jobs:
 
     steps:
     - name: Create draft GitHub Release
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         TAG="${{ needs.release.outputs.tag }}"
 
