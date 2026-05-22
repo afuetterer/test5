@@ -52,12 +52,13 @@ jobs:
     needs: release
     runs-on: ubuntu-24.04
     if: needs.release.outputs.released == 'true'
+    permissions:
+      contents: write
 
     steps:
     - name: Create draft GitHub Release
-      if: steps.psr.outputs.released == 'true'
       run: |
-        TAG="${{ steps.psr.outputs.tag }}"
+        TAG="${{ needs.release.outputs.tag }}"
 
         gh release create "${TAG}" \
           --draft \
