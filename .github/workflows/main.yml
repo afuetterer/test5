@@ -22,6 +22,11 @@ jobs:
     runs-on: ubuntu-24.04
     permissions:
       contents: read
+
+    outputs:
+      released: ${{ steps.psr.outputs.released }}
+      tag: ${{ steps.psr.outputs.tag }}
+
     steps:
 
     - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -36,8 +41,25 @@ jobs:
         private-key: ${{ secrets.APP_PRIVATE_KEY }}
 
     - name: Create semantic release
+      id: psr
       uses: python-semantic-release/python-semantic-release@350c48fcb3ffcdfd2e0a235206bc2ecea6b69df0 # v10.5.3
       with:
         github_token: ${{ steps.app-token.outputs.token }}
         changelog: false
         vcs_release: false
+
+  draft-github-release:
+    needs: release
+    runs-on: ubuntu-24.04
+    if: needs.release.outputs.released == 'true'
+
+    steps:
+    - name: Create draft GitHub Release
+      if: steps.psr.outputs.released == 'true'
+      run: |
+        TAG="${{ steps.psr.outputs.tag }}"
+
+        gh release create "${TAG}" \
+          --draft \
+          --verify-tag \
+          --title "${TAG}"
