@@ -6,6 +6,12 @@ All notable changes to this project will be documented in this file. See [conven
 
 ### Features
 
+- **readme:** [**breaking**] some breaking change (#1) ([b8185ee]($REPO/commit/b8185eefb1bd0c2bdc5e24caeec3d85b6c3c8977))
+
+## [0.4.0](https://github.com/afuetterer/test5/compare/0.3.0..0.4.0) (2026-05-22)
+
+### Features
+
 - **changelog:** make more like ([af26437]($REPO/commit/af2643794ad9949113bb01cdbf7232195c8e15f2))
 
 ## [0.3.0](https://github.com/afuetterer/test5/compare/0.2.0..0.3.0) (2026-05-21)
