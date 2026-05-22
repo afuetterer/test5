@@ -58,10 +58,11 @@ jobs:
     steps:
 
     - name: Checkout released tag with full history
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         fetch-depth: 0
         ref: ${{ needs.release.outputs.tag }}
+        persist-credentials: false
 
     - name: Create draft GitHub Release
       env:
