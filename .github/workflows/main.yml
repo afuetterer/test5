@@ -56,6 +56,13 @@ jobs:
       contents: write
 
     steps:
+
+    - name: Checkout released tag with full history
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        ref: ${{ needs.release.outputs.tag }}
+
     - name: Create draft GitHub Release
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
