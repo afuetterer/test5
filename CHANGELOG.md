@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html). See
 [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit guidelines.
 
+## [0.7.0](https://github.com/afuetterer/test5/compare/0.6.2..0.7.0) (2026-05-22)
+
+### Features
+
+- main yaml ([7889962](https://github.com/afuetterer/test5/commit/78899627ec51d89cd7ba390f73dcc75211a4f051))
+
 ## [0.6.2](https://github.com/afuetterer/test5/compare/0.6.1..0.6.2) (2026-05-22)
 
 ### Performance
