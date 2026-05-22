@@ -11,7 +11,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 - test prepend ([e84702c](https://github.com/afuetterer/test5/commit/e84702c19f0d5beb823e9cc99716ff97bb3f6b93))
 
-## [Unreleased]
+## [0.5.1](https://github.com/afuetterer/test5/compare/0.5.0..0.5.1) (2026-05-22)
 
 ### Bug Fixes
 
