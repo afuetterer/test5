@@ -101,6 +101,7 @@ body = """
 {% endfor %}\n
 """
 trim = true
+output = "CHANGELOG.md"
 
 [tool.git-cliff.git]
 conventional_commits = true
