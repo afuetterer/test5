@@ -73,12 +73,9 @@ header = """
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.\n
 """
 body = """
-{%- macro remote_url() -%}
-  https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}
-{%- endmacro -%}
 {% if version %}\
     {% if previous.version %}\
-        ## [{{ version }}]({{ self::remote_url() }}/compare/{{ previous.version }}..{{ version }}) ({{ timestamp | date(format="%Y-%m-%d") }})
+        ## [{{ version }}]($REPO/compare/{{ previous.version }}..{{ version }}) ({{ timestamp | date(format="%Y-%m-%d") }})
     {% else %}\
         ## {{ version }} ({{ timestamp | date(format="%Y-%m-%d") }})
     {% endif %}\
@@ -105,6 +102,9 @@ body = """
 """
 trim = true
 output = "CHANGELOG.md"
+postprocessors = [
+  { pattern = '\$REPO', replace = "https://github.com/afuetterer/test5" },
+]
 
 [tool.git-cliff.git]
 conventional_commits = true
@@ -115,9 +115,7 @@ commit_parsers = [
   { message = "^perf", group = "<!-- 2 -->Performance"},
   { message = "^refactor", group = "<!-- 3 -->Refactor"},
   { message = "^test", group = "<!-- 4 -->Testing"},
-  { message = "^docs", group = "<!-- 5 -->Documentation"},
-  # { message = ".*", skip = true},
-  
+  { message = "^docs", group = "<!-- 5 -->Documentation"}, 
 ]
 filter_commits = true
 sort_commits = "newest"
