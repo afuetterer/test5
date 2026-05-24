@@ -3,12 +3,6 @@
 # ---------------------------------------------
 
 [changelog]
-header = """
-# Changelog\n
-All notable changes to this project will be documented in this file.\n
-This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html). See
-[conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit guidelines.\n
-"""
 body = """
 {% if version %}\
     {% if previous.version %}\
@@ -37,25 +31,30 @@ body = """
     {% endfor -%}
 {% endfor %}\n
 """
-trim = true
+header = """
+# Changelog\n
+All notable changes to this project will be documented in this file.\n
+This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html). See
+[conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit guidelines.\n
+"""
 postprocessors = [
-  { pattern = "<REPO>", replace = "https://github.com/afuetterer/test5" },
+  {pattern = "<REPO>", replace = "https://github.com/afuetterer/test5"}
 ]
+trim = true
 
 [git]
-conventional_commits = true
-filter_unconventional = true
 commit_parsers = [
-  { message = "^feat", group = "<!-- 0 -->Features"},
-  { message = "^fix", group = "<!-- 1 -->Bug Fixes"},
-  { message = "^perf", group = "<!-- 2 -->Performance"},
-  { message = "^refactor", group = "<!-- 3 -->Refactor"},
-  { message = "^test", group = "<!-- 4 -->Testing"},
-  { message = "^docs", group = "<!-- 5 -->Documentation"}, 
+  {message = "^feat", group = "<!-- 0 -->Features"},
+  {message = "^fix", group = "<!-- 1 -->Bug Fixes"},
+  {message = "^perf", group = "<!-- 2 -->Performance"},
+  {message = "^refactor", group = "<!-- 3 -->Refactor"},
+  {message = "^test", group = "<!-- 4 -->Testing"},
+  {message = "^docs", group = "<!-- 5 -->Documentation"}
 ]
-filter_commits = true
-sort_commits = "newest"
 commit_preprocessors = [
-  { pattern = '\((\w+\s)?#([0-9]+)\)', replace = "([#${2}](<REPO>/pull/${2}))" },
+  {pattern = '\((\w+\s)?#([0-9]+)\)', replace = "([#${2}](<REPO>/pull/${2}))"}
 ]
-
+conventional_commits = true
+filter_commits = true
+filter_unconventional = true
+sort_commits = "newest"
