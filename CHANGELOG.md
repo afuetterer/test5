@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html). See
 [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit guidelines.
 
+## [0.9.0](https://github.com/afuetterer/test5/compare/0.8.0..0.9.0) (2026-05-25)
+
+### Features
+
+- make zizmor happy ([beab0d4](https://github.com/afuetterer/test5/commit/beab0d4def9815f8bfa231dc36e0b7243fe6f65b))
+
 ## [0.8.0](https://github.com/afuetterer/test5/compare/0.7.5..0.8.0) (2026-05-24)
 
 ### Features
