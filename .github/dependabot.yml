@@ -1,0 +1,17 @@
+# dependabot
+# Ref: https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+# ------------------------------------------------------------------------------
+version: 2
+updates:
+- package-ecosystem: pre-commit
+  directory: /
+  schedule:
+    interval: quarterly
+  commit-message:
+    prefix: build
+  labels:
+  - 'deps: pre-commit'
+  groups:
+    pre-commit:
+      patterns:
+      - '*'
