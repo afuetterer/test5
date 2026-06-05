@@ -71,6 +71,8 @@ jobs:
       with:
         config: .github/templates/release_notes.toml
         args: --latest --verbose --output=release-notes.md
+      env:
+        GITHUB_REPO: ${{ github.repository }}
 
     - run: ls -la
 
