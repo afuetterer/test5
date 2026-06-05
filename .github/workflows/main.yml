@@ -65,14 +65,17 @@ jobs:
         # ref: ${{ needs.release.outputs.tag }}
         persist-credentials: false
 
-    - name: Generate release notes
-      uses: orhun/git-cliff-action@v4.8.0
-      id: git-cliff
-      with:
-        config: .github/templates/release_notes.toml
-        args: --latest --output=release-notes.md -vv
-      env:
-        GITHUB_REPO: ${{ github.repository }}
+    - uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+    - run: uvx git-cliff --config=.github/templates/release_notes.toml --latest --output=release-notes.md -v
+
+    # - name: Generate release notes
+    #   uses: orhun/git-cliff-action@v4.8.0
+    #   id: git-cliff
+    #   with:
+    #     config: .github/templates/release_notes.toml
+    #     args: --latest --output=release-notes.md -v
+    #   # env:
+    #   #   GITHUB_REPO: ${{ github.repository }}
 
     - run: ls -la
 
