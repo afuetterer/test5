@@ -4,7 +4,6 @@
 
 [changelog]
 body = """
-**Full Changelog**: <<REPO>/compare/{{ previous.version }}..{{ version }}>
 {% for group, commits in commits | group_by(attribute="group") %}
     ### {{ group | striptags | trim | upper_first }}
     {% for commit in commits
@@ -35,8 +34,11 @@ or with pip:
 ```console
 python -m pip install <PROJECT>=={{ version }}
 ```
+
+---
+Full Changelog: <<REPO>/compare/{{ previous.version }}..{{ version }}>
 """
-header = "## Release Notes\n\n"
+header = "## Release Notes\n"
 postprocessors = [
   {pattern = "<PROJECT>", replace = "test5"},
   {pattern = "<REPO>", replace = "https://github.com/afuetterer/test5"}

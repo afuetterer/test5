@@ -67,10 +67,11 @@ jobs:
 
     - uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
 
+    # TODO: git cliff is not pinned here.
     - run: |
-        uvx git-cliff
-          --config=.github/templates/release_notes.toml
-          --latest
+        uvx git-cliff \
+          --config=.github/templates/release_notes.toml \
+          --latest \
           --output=release-notes.md
 
     - name: Create draft GitHub Release
