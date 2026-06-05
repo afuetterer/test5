@@ -24,20 +24,21 @@ body = """
 {% endfor %}
 ## Installation
 
-You can install this release from [PyPI](https://pypi.org/project/{{ remote.github.repo }}/{{ version }}) using uv:
+You can install this release from [PyPI](https://pypi.org/project/<PROJECT>/{{ version }}) using uv:
 
 ```console
-uv add {{ remote.github.repo }}=={{ version }}
+uv add <PROJECT>=={{ version }}
 ```
 
 or with pip:
 
 ```console
-python -m pip install {{ remote.github.repo }}=={{ version }}
+python -m pip install <PROJECT>=={{ version }}
 ```
 """
 header = "## Release Notes\n\n"
 postprocessors = [
+  {pattern = "<PROJECT>", replace = "test5"},
   {pattern = "<REPO>", replace = "https://github.com/afuetterer/test5"}
 ]
 trim = true
@@ -58,7 +59,3 @@ conventional_commits = true
 filter_commits = true
 filter_unconventional = true
 sort_commits = "newest"
-
-[remote.github]
-owner = "afuetterer"
-repo = "test5"

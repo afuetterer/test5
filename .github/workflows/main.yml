@@ -70,9 +70,7 @@ jobs:
       id: git-cliff
       with:
         config: .github/templates/release_notes.toml
-        args: --latest --verbose
-      env:
-        OUTPUT: release-notes.md
+        args: --latest --verbose --output=release-notes.md
 
     - run: ls -la
 
