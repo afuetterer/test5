@@ -4,7 +4,7 @@ requires = [ "uv-build" ]
 
 [project]
 name = "test5"
-version = "0.10.4"
+version = "0.10.5"
 description = "A Scythe for harvesting OAI-PMH repositories."
 readme = "README.md"
 keywords = [
