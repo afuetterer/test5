@@ -56,7 +56,7 @@ sed -i "s/^version: .*/version: $NEW_VERSION/" CITATION.cff
 sed -i "s/^date-released: .*/date-released: $(date "+%Y-%m-%d")/" CITATION.cff
 python -m pip install uv
 uv lock --upgrade-package "$PACKAGE_NAME" --exclude-newer="1 week"
-uvx git-cliff --config=.github/cliff.toml --unreleased --tag "${NEW_VERSION}" --prepend CHANGELOG.md
+uvx git-cliff --config=.github/templates/changelog.toml --unreleased --tag "${NEW_VERSION}" --prepend CHANGELOG.md
 git add CITATION.cff CHANGELOG.md uv.lock
 uv build
 """
