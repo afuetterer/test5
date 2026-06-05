@@ -65,6 +65,19 @@ jobs:
         ref: ${{ needs.release.outputs.tag }}
         persist-credentials: false
 
+
+    - name: Generate a changelog
+      uses: orhun/git-cliff-action@v4
+      id: git-cliff
+      with:
+        config: .github/templates/changelog.toml
+        args: --verbose
+      env:
+        OUTPUT: CHANGELOG.md
+
+    - name: Print the changelog
+      run: cat "${{ steps.git-cliff.outputs.changelog }}"
+
     # setup uv
 
     # TODO: generate release notes with git-cliff
