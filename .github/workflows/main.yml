@@ -74,8 +74,10 @@ jobs:
       env:
         OUTPUT: release-notes.md
 
-    - name: Print the changelog
-      run: cat "${{ steps.git-cliff.outputs.changelog }}"
+    - run: ls -la
+
+    # - name: Print the changelog
+    #   run: cat "${{ steps.git-cliff.outputs.changelog }}"
 
     - name: Create draft GitHub Release
       env:
@@ -88,4 +90,3 @@ jobs:
           --verify-tag \
           --title "${TAG}" \
           --notes-file release-notes.md
-
