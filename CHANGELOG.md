@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html). See
 [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit guidelines.
 
+## [0.11.0](https://github.com/afuetterer/test5/compare/0.10.6..0.11.0) (2026-06-05)
+
+### Features
+
+- cliff ([c78ee90](https://github.com/afuetterer/test5/commit/c78ee904a7d82a091c811c74bb8f1bf52981b1c7))
+
 ## [0.10.6](https://github.com/afuetterer/test5/compare/0.10.5..0.10.6) (2026-06-05)
 
 ### Bug Fixes
