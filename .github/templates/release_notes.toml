@@ -2,6 +2,10 @@
 # Ref: https://git-cliff.org/docs/configuration
 # ---------------------------------------------
 
+[remote.github]
+owner = "afuetterer"
+repo = "test5"
+
 [changelog]
 body = """
 **Full Changelog**: <<REPO>/compare/{{ previous.version }}..{{ version }}>

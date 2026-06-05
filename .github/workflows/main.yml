@@ -70,7 +70,7 @@ jobs:
       id: git-cliff
       with:
         config: .github/templates/release_notes.toml
-        args: --verbose --latest
+        args: --latest --verbose
       env:
         OUTPUT: release-notes.md
 
@@ -86,6 +86,6 @@ jobs:
         gh release create "${TAG}" \
           --draft \
           --verify-tag \
-          --title "${TAG}"
+          --title "${TAG}" \
           --notes-file release-notes.md
 
