@@ -51,5 +51,6 @@ jobs:
         GH_TOKEN: ${{ steps.app-token.outputs.token }}
       run: |
         TAG="${{ steps.psr.outputs.tag }}"
-        awk '/^## \['"$TAG"'\]/{p=1; next} /^## /{p=0} p' CHANGELOG.md | \
+        NOTES=$(awk '/^## \['"$TAG"'\]/{url=substr($0, index($0,"(")+1, index($0,")")-index($0,"(")-1); p=1; next} /^## /{p=0} p' CHANGELOG.md)
+        printf '%s\n**Full Changelog**: %s\n' "$NOTES" "$url" | \
         gh release create "${TAG}" --draft --title "${TAG}" --notes-file - --target main --verify-tag 2>/dev/null || true
