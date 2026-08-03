@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html). See
 [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit guidelines.
 
+## [0.11.3](https://github.com/afuetterer/test5/compare/0.11.2..0.11.3) (2026-08-03)
+
+### Bug Fixes
+
+- **citation:** change name in citation file ([ae3129c](https://github.com/afuetterer/test5/commit/ae3129c4001d1de24918d27f2f9b1dba3c55b147))
+
+### Performance improvements
+
+- hooks ([035ca0c](https://github.com/afuetterer/test5/commit/035ca0cb522b36069ccf7ab5453336c26913294d))
+
+### Documentation
+
+- **readme:** this is not a project ([b472220](https://github.com/afuetterer/test5/commit/b47222084b21e1fb1e16508e61df70148bd89d41))
+
 ## [0.11.2](https://github.com/afuetterer/test5/compare/0.11.1..0.11.2) (2026-08-03)
 
 ### Bug Fixes
