@@ -46,8 +46,8 @@ trim = true
 commit_parsers = [
   {message = "^feat", group = "<!-- 0 -->Features"},
   {message = "^fix", group = "<!-- 1 -->Bug Fixes"},
-  {message = "^perf", group = "<!-- 2 -->Performance"},
-  {message = "^refactor", group = "<!-- 3 -->Refactor"},
+  {message = "^perf", group = "<!-- 2 -->Performance improvements"},
+  {message = "^refactor", group = "<!-- 3 -->Code Refactoring"},
   {message = "^test", group = "<!-- 4 -->Testing"},
   {message = "^docs", group = "<!-- 5 -->Documentation"}
 ]

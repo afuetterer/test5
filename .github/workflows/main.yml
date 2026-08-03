@@ -17,71 +17,39 @@ env:
 
 jobs:
   release:
+    name: Create release using python-semantic-release
+    runs-on: ubuntu-26.04
     # disables this workflow from running in a repository that is not part of the indicated organization/user
     if: github.repository_owner == 'afuetterer'
-    runs-on: ubuntu-24.04
     permissions:
-      contents: read
-
+      contents: write
     outputs:
       released: ${{ steps.psr.outputs.released || 'false' }}
       tag: ${{ steps.psr.outputs.tag }}
-
     steps:
-
-    - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+    - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
       with:
         fetch-depth: 0 # get all commits and tags
         persist-credentials: false
-
     - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
       id: app-token
       with:
         client-id: ${{ secrets.APP_CLIENT_ID }}
         private-key: ${{ secrets.APP_PRIVATE_KEY }}
         permission-contents: write
-
     - name: Create semantic release
       id: psr
       uses: python-semantic-release/python-semantic-release@350c48fcb3ffcdfd2e0a235206bc2ecea6b69df0 # v10.5.3
       with:
+        # allow python-semantic-release to push to protected main branch
         github_token: ${{ steps.app-token.outputs.token }}
         changelog: false
         vcs_release: false
-
-  draft-github-release:
-    needs: release
-    runs-on: ubuntu-24.04
-    if: needs.release.outputs.released == 'true'
-    permissions:
-      contents: write
-
-    steps:
-
-    - name: Checkout
-      uses: actions/checkout@v6
-      with:
-        fetch-depth: 0
-        ref: ${{ needs.release.outputs.tag }}
-        persist-credentials: false
-
-    - uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
-
-    # TODO: git cliff is not pinned here.
-    - run: |
-        uvx git-cliff \
-          --config=.github/templates/release_notes.toml \
-          --latest \
-          --output=release-notes.md
-
-    - name: Create draft GitHub Release
+    - name: Create GitHub Release from changelog
+      if: steps.psr.outputs.released == 'true'
       env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GH_TOKEN: ${{ steps.app-token.outputs.token }}
       run: |
-        TAG="${{ needs.release.outputs.tag }}"
-
-        gh release create "${TAG}" \
-          --draft \
-          --verify-tag \
-          --title "${TAG}" \
-          --notes-file release-notes.md
+        TAG="${{ steps.psr.outputs.tag }}"
+        awk '/^## \['"$TAG"'\]/{p=1; next} /^## /{p=0} p' CHANGELOG.md | \
+        gh release create "${TAG}" --draft --title "${TAG}" --notes-file - --target main --verify-tag 2>/dev/null || true
