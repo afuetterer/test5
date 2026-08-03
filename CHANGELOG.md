@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html). See
 [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit guidelines.
 
+## [0.12.0](https://github.com/afuetterer/test5/compare/0.11.4..0.12.0) (2026-08-03)
+
+### Features
+
+- notes ([f76e795](https://github.com/afuetterer/test5/commit/f76e7955fac19060cc869289c00525ceecfc4eb7))
+
 ## [0.11.4](https://github.com/afuetterer/test5/compare/0.11.3..0.11.4) (2026-08-03)
 
 ### Bug Fixes
