@@ -35,14 +35,14 @@ repos:
     exclude: pyproject.toml
 
 - repo: https://github.com/crate-ci/typos
-  rev: f8a58b6b53f2279f71eb605f03a4ae4d10608f45  # frozen: v1.47.0
+  rev: bee27e3a4fd1ea2111cf90ab89cd076c870fce14  # frozen: v1.48.0
   hooks:
   - id: typos
     args: [--force-exclude]
     exclude: CHANGELOG.md # the commit hashes in changelog trigger the spell checker
 
 - repo: https://github.com/python-jsonschema/check-jsonschema
-  rev: f805888065fdb6162e1f800e50bb9460cbd223d6  # frozen: 0.37.2
+  rev: 6b63472e72e1a91ed8a2f6d483790dfb644fa1d3  # frozen: 0.37.4
   hooks:
   - id: check-dependabot
   - id: check-github-workflows
