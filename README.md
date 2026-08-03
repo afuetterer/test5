@@ -2,4 +2,4 @@
 
 This is a test project.
 
-This is a dummy project.
+This is not a dummy project.
