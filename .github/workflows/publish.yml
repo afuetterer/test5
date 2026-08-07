@@ -41,7 +41,9 @@ jobs:
         name: Packages
         path: dist
     - name: Upload wheel to GitHub Release
-      run: gh release upload "${GH_REF_NAME}" dist/*.whl
+      run: |
+        gh_ref_name="${GH_REF_NAME}"
+        gh release upload "${gh_ref_name}" dist/*.whl
       env:
         GH_TOKEN: ${{ github.token }}
         GH_REF_NAME: ${{ github.ref_name }}
