@@ -52,7 +52,7 @@ jobs:
         URL=$(grep "^## \\[$tag\\]" CHANGELOG.md | sed 's/.*(\(https:[^)]*\)).*/\1/')
         awk '/^## \['"$tag"'\]/{p=1; next} /^## /{p=0} p' CHANGELOG.md > /tmp/release_notes.md
         printf '**Full Changelog**: %s\n' "$URL" >> /tmp/release_notes.md
-        gh release create "${tag}" --draft --title "${tag}" --notes-file /tmp/release_notes.md --target main --verify-tag 2>/dev/null || true
+        gh release create "${tag}" --title "${tag}" --notes-file /tmp/release_notes.md --target main --verify-tag 2>/dev/null || true
       env:
         GH_TOKEN: ${{ steps.app-token.outputs.token }}
         TAG: ${{ steps.psr.outputs.tag }}
