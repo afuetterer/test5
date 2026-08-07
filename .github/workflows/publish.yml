@@ -18,16 +18,11 @@ jobs:
     # disables this workflow from running in a repository that is not part of the indicated organization/user
     if: github.repository_owner == 'afuetterer'
     runs-on: ubuntu-slim
-    permissions:
-      attestations: write   # Needed to upload attestations - maybe remove this later
-      id-token: write       # Needed to upload attestations - maybe remove this later
     steps:
     - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
       with:
         persist-credentials: false
     - uses: hynek/build-and-inspect-python-package@d44ca7d91762de7a7d5436ddae667c6da6d1c3df # v2.18.0
-      with:
-        skip-sdist: 'true'
   upload:
     name: Upload package distributions to GitHub Release
     # disables this workflow from running in a repository that is not part of the indicated organization/user
@@ -45,8 +40,8 @@ jobs:
       with:
         name: Packages
         path: dist
-    - name: Upload package distributions to GitHub Release
-      run: gh release upload "${GH_REF_NAME}" dist/* --clobber
+    - name: Upload wheel to GitHub Release
+      run: gh release upload "${GH_REF_NAME}" dist/*.whl
       env:
         GH_TOKEN: ${{ github.token }}
         GH_REF_NAME: ${{ github.ref_name }}
