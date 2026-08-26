@@ -8,7 +8,7 @@ version = "0.13.6"
 description = "A Scythe for harvesting OAI-PMH repositories."
 readme = "README.md"
 keywords = [
-  "metadata",
+  "metadatas",
 ]
 license = "BSD-3-Clause"
 license-files = [ "LICENSE" ]
